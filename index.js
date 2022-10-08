@@ -11,6 +11,9 @@ function getTime() {
     return `${hr}:${mn}:${sc}`
 }
 
+
+/* Standalone Functions */
+
 function info(name, text) {
     console.log(`${chalk.blue(`[${getTime()}]`)} ${chalk.bgCyan('INFO ')} [${chalk.bold(name)}] ${text}`);
 }
@@ -23,4 +26,31 @@ function error(name, text) {
     console.log(`${chalk.blue(`[${getTime()}]`)} ${chalk.bgRed('ERROR')} [${chalk.bold(name)}] ${text}`);
 }
 
-module.exports = {info, warn, error};
+
+/* Process Class */
+
+class Logger {
+    constructor(name) {
+        this.name = name;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    info(text) {
+        console.log(`${chalk.blue(`[${getTime()}]`)} ${chalk.bgCyan('INFO ')} [${chalk.bold(this.name)}] ${text}`);
+    }
+    
+    warn(text) {
+        console.log(`${chalk.blue(`[${getTime()}]`)} ${chalk.bgYellow('WARN ')} [${chalk.bold(this.name)}] ${text}`);
+    }
+    
+    error(text) {
+        console.log(`${chalk.blue(`[${getTime()}]`)} ${chalk.bgRed('ERROR')} [${chalk.bold(this.name)}] ${text}`);
+    }
+}
+
+
+
+module.exports = {info, warn, error, Logger};
