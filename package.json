@@ -1,0 +1,20 @@
+{
+  "name": "okayulogger",
+  "version": "1.4.0",
+  "description": "A simple console logger for OkayuCDN",
+  "main": "./index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "console",
+    "log",
+    "warn",
+    "error"
+  ],
+  "author": "okawaffles",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2"
+  }
+}
