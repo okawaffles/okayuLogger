@@ -1,11 +1,11 @@
 {
   "name": "okayulogger",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A simple console logger for OkayuCDN",
   "main": "./index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/npm/okayuLogger.git"
+    "url": "https://github.com/okawaffles/okayuLogger.git"
   },
   "scripts": {
     "test": "node test.js"
