@@ -1,7 +1,7 @@
 {
   "name": "okayulogger",
-  "version": "1.4.1",
-  "description": "A simple console logger for OkayuCDN",
+  "version": "1.4.2",
+  "description": "A simple console logger that has colors.",
   "main": "./index.js",
   "repository": {
     "type": "git",
