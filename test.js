@@ -1,11 +1,14 @@
-const L = require('./index.js');
+const { info, warn, error } = require('./index.js');
 
-L.info('test', 'Info works!');
-L.warn('test', 'Warn works!');
-L.error('test', 'Error works!');
+info("example name", "Hello World! This is the info function!");
+warn("example name", "Hello World! This is the warn function!");
+error("example name", "Hello World! This is the error function!");
 
-let C = new L.Logger('testClass');
 
-C.info("Class Info works!");
-C.warn("Class Warn works!");
-C.error("Class Error works!");
+const { Logger } = require('./index.js');
+
+let L = new Logger("example name");
+
+L.info("Hello World! This is the info function!");
+L.warn("Hello World! This is the warn function!");
+L.error("Hello World! This is the error function!");

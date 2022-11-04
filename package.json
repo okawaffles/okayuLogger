@@ -1,6 +1,6 @@
 {
   "name": "okayulogger",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": "A simple console logger that has colors.",
   "main": "./index.js",
   "repository": {
@@ -8,7 +8,8 @@
     "url": "https://github.com/okawaffles/okayuLogger.git"
   },
   "scripts": {
-    "test": "node test.js"
+    "build":"tsc index.ts",
+    "test": "npm run build && node test.js"
   },
   "keywords": [
     "console",
@@ -22,6 +23,7 @@
     "chalk": "^4.1.2"
   },
   "devDependencies": {
+    "@types/node": "^18.11.9",
     "typescript": "^4.8.4"
   }
 }
