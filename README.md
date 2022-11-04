@@ -5,6 +5,7 @@ Shows time, logger name, and some text, with some fancy colors to make it look n
 Includes info, warn, and error functions, as well as a Logger class.
 
 Example output:
+
 ![Preview Image](./example.png)
 
 ## Standalone function usage
