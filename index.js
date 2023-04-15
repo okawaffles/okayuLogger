@@ -1,19 +1,19 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.Logger = exports.error = exports.warn = exports.info = void 0;
-const chalk_1 = require("chalk");
+var chalk_1 = require("chalk");
 function getTime() {
-    let d = new Date();
-    let hr = d.getHours();
-    let mn = d.getMinutes();
-    let sc = d.getSeconds();
+    var d = new Date();
+    var hr = d.getHours();
+    var mn = d.getMinutes();
+    var sc = d.getSeconds();
     if (hr < 10)
-        hr = parseInt(`0${hr}`);
+        hr = parseInt("0".concat(hr));
     if (mn < 10)
-        mn = parseInt(`0${mn}`);
+        mn = parseInt("0".concat(mn));
     if (sc < 10)
-        sc = parseInt(`0${sc}`);
-    return `${hr}:${mn}:${sc}`;
+        sc = parseInt("0".concat(sc));
+    return "".concat(hr, ":").concat(mn, ":").concat(sc);
 }
 /**
  * Log an info statement to the console
@@ -21,7 +21,7 @@ function getTime() {
  * @param text The text that is being logged by the process
  */
 function info(name, text) {
-    console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgCyan)('INFO ')} [${(0, chalk_1.bold)(name)}] ${text}`);
+    console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgCyan)('INFO '), " [").concat((0, chalk_1.bold)(name), "] ").concat(text));
 }
 exports.info = info;
 /**
@@ -30,7 +30,7 @@ exports.info = info;
  * @param text The text that is being logged by the process
  */
 function warn(name, text) {
-    console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgYellow)('WARN ')} [${(0, chalk_1.bold)(name)}] ${text}`);
+    console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgYellow)('WARN '), " [").concat((0, chalk_1.bold)(name), "] ").concat(text));
 }
 exports.warn = warn;
 /**
@@ -39,44 +39,45 @@ exports.warn = warn;
  * @param text The text that is being logged by the process
  */
 function error(name, text) {
-    console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgRed)('ERROR')} [${(0, chalk_1.bold)(name)}] ${text}`);
+    console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgRed)('ERROR'), " [").concat((0, chalk_1.bold)(name), "] ").concat(text));
 }
 exports.error = error;
 /**
   * A logger class that always keeps its name.
   * Useful for multi-process/task logging.
  */
-class Logger {
-    constructor(name) {
+var Logger = /** @class */ (function () {
+    function Logger(name) {
         this.name = name;
     }
     /**
      * Set the process name for the logger class.
      * @param name The name of the process which will be logging
      */
-    setName(name) {
+    Logger.prototype.setName = function (name) {
         this.name = name;
-    }
+    };
     /**
      * Log an info statement to the console
      * @param text The text that is being logged by the process
      */
-    info(text) {
-        console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgCyan)('INFO ')} [${(0, chalk_1.bold)(this.name)}] ${text}`);
-    }
+    Logger.prototype.info = function (text) {
+        console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgCyan)('INFO '), " [").concat((0, chalk_1.bold)(this.name), "] ").concat(text));
+    };
     /**
      * Log a warning statement to the console
      * @param text The text that is being logged by the process
      */
-    warn(text) {
-        console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgYellow)('WARN ')} [${(0, chalk_1.bold)(this.name)}] ${text}`);
-    }
+    Logger.prototype.warn = function (text) {
+        console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgYellow)('WARN '), " [").concat((0, chalk_1.bold)(this.name), "] ").concat(text));
+    };
     /**
      * Log an error statement to the console
      * @param text The text that is being logged by the process
      */
-    error(text) {
-        console.log(`${(0, chalk_1.blue)(`[${getTime()}]`)} ${(0, chalk_1.bgRed)('ERROR')} [${(0, chalk_1.bold)(this.name)}] ${text}`);
-    }
-}
+    Logger.prototype.error = function (text) {
+        console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgRed)('ERROR'), " [").concat((0, chalk_1.bold)(this.name), "] ").concat(text));
+    };
+    return Logger;
+}());
 exports.Logger = Logger;
