@@ -4,15 +4,15 @@ exports.Logger = exports.error = exports.warn = exports.info = void 0;
 var chalk_1 = require("chalk");
 function getTime() {
     var d = new Date();
-    var hr = d.getHours();
-    var mn = d.getMinutes();
-    var sc = d.getSeconds();
-    if (hr < 10)
-        hr = parseInt("0".concat(hr));
-    if (mn < 10)
-        mn = parseInt("0".concat(mn));
-    if (sc < 10)
-        sc = parseInt("0".concat(sc));
+    var hr = d.getHours().toString();
+    var mn = d.getMinutes().toString();
+    var sc = d.getSeconds().toString();
+    if (parseInt(hr) < 10)
+        hr = "0".concat(hr);
+    if (parseInt(mn) < 10)
+        mn = "0".concat(mn);
+    if (parseInt(sc) < 10)
+        sc = "0".concat(sc);
     return "".concat(hr, ":").concat(mn, ":").concat(sc);
 }
 /**
