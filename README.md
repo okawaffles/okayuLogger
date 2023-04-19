@@ -1,3 +1,4 @@
+![Build and Test](https://github.com/okawaffles/okayuLogger/actions/workflows/build.yml/badge.svg)
 # A simple console logger that has colors.
 Rewritten in TypeScript as of 2.0.0.
 
