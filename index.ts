@@ -2,13 +2,13 @@ import { blue, bgCyan, bgYellow, bgRed, bold } from 'chalk';
 
 function getTime() {
     let d = new Date();
-    let hr = d.getHours();
-    let mn = d.getMinutes();
-    let sc = d.getSeconds();
-    if (hr < 10) hr = parseInt(`0${hr}`);
-    if (mn < 10) mn = parseInt(`0${mn}`);
-    if (sc < 10) sc = parseInt(`0${sc}`);
-    return `${hr}:${mn}:${sc}`
+    let hr: string = d.getHours().toString();
+    let mn: string = d.getMinutes().toString();
+    let sc: string = d.getSeconds().toString();
+    if (parseInt(hr) < 10) hr = `0${hr}`;
+    if (parseInt(mn) < 10) mn = `0${mn}`;
+    if (parseInt(sc) < 10) sc = `0${sc}`;
+    return `${hr}:${mn}:${sc}`;
 }
 
 /**
