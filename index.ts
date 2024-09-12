@@ -44,33 +44,12 @@ export function error(name: string, text: string) {
   * A logger class that always keeps its name.
   * Useful for multi-process/task logging.
   * @param name The name of the process that will be displayed on the console.
-  * @param writeOut default: true | Should we write out to `latest.log`?
-  * @param renameOld default: false | Should we rename the old `latest.log` and make a new one?
-  * @since 2.1.0 Will *always* log to ./latest.log (unless disabled) and will rename latest-ol.log to have a timestamp if `renameOld` is `true`
  */
 export class Logger {
     name: string;
-    private writeOut = true;
 
-    constructor(name: string, writeOut: boolean = true, renameOld: boolean = false) {
+    constructor(name: string) {
         this.name = name;
-        this.writeOut = writeOut;
-
-        if (renameOld) {
-            let now = new Date();
-            // YYYY-MM-DD_HH-mm-SS
-            let laststdoutfilename = `okayulogger-last-${now.getFullYear()}-${now.getMonth()}-${now.getDay()}_${now.getHours()}-${now.getMinutes()}-${now.getSeconds()}.log`
-            
-            try {
-                renameSync(join(__dirname, 'latest.log'), join(__dirname, laststdoutfilename));
-            } catch (err: any) {
-                // pass
-            }
-
-            writeFileSync(join(__dirname, 'latest.log'), `=> New log file created by OkayuLogger instance ${this.name}.\n`, 'utf-8');
-        }
-
-        appendFileSync(join(__dirname, 'latest.log'), `=> OkayuLogger instance (${this.name}) has hooked into this log.\n`, 'utf-8');
     }
 
     /**
@@ -87,10 +66,6 @@ export class Logger {
      */
     info(text: string) {
         console.log(`${blue(`[${getTime()}]`)} ${bgCyan('INFO ')} [${bold(this.name)}] ${text}`);
-        
-        if (this.writeOut) {
-            appendFileSync(join(__dirname, 'latest.log'), `I [${getTime()}] (${this.name}) ${text}\n`);
-        }
     }
     
     /**
@@ -99,10 +74,6 @@ export class Logger {
      */
     warn(text: string) {
         console.log(`${blue(`[${getTime()}]`)} ${bgYellow('WARN ')} [${bold(this.name)}] ${text}`);
-
-        if (this.writeOut) {
-            appendFileSync(join(__dirname, 'latest.log'), `W [${getTime()}] (${this.name}) ${text}\n`);
-        }
     }
     
     /**
@@ -111,9 +82,5 @@ export class Logger {
      */
     error(text: string) {
         console.log(`${blue(`[${getTime()}]`)} ${bgRed('ERROR')} [${bold(this.name)}] ${text}`);
-
-        if (this.writeOut) {
-            appendFileSync(join(__dirname, 'latest.log'), `E [${getTime()}] (${this.name}) ${text}\n`);
-        }
     }
 }
