@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-exports.Logger = exports.error = exports.warn = exports.info = void 0;
+exports.Logger = exports.debug = exports.fatal = exports.error = exports.warn = exports.info = void 0;
 var chalk_1 = require("chalk");
 function getTime() {
     var d = new Date();
@@ -43,6 +43,24 @@ function error(name, text) {
 }
 exports.error = error;
 /**
+ * Log a fatal error statement to the console
+ * @param name The name of the process which is logging
+ * @param text The text that is being logged by the process
+ */
+function fatal(name, text) {
+    console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgRed)((0, chalk_1.bold)('FATAL')), " [").concat((0, chalk_1.bold)(name), "] ").concat((0, chalk_1.red)(text)));
+}
+exports.fatal = fatal;
+/**
+ * Log a debug statement to the console
+ * @param name The name of the process which is logging
+ * @param text The text that is being logged by the process
+ */
+function debug(name, text) {
+    console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgBlue)('DEBUG'), " [").concat(name, "] ").concat((0, chalk_1.dim)(text)));
+}
+exports.debug = debug;
+/**
   * A logger class that always keeps its name.
   * Useful for multi-process/task logging.
   * @param name The name of the process that will be displayed on the console.
@@ -78,6 +96,20 @@ var Logger = /** @class */ (function () {
      */
     Logger.prototype.error = function (text) {
         console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgRed)('ERROR'), " [").concat((0, chalk_1.bold)(this.name), "] ").concat(text));
+    };
+    /**
+    * Log a fatal error statement to the console
+    * @param text The text that is being logged by the process
+    */
+    Logger.prototype.fatal = function (text) {
+        console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgRed)((0, chalk_1.bold)('FATAL')), " [").concat((0, chalk_1.bold)(this.name), "] ").concat((0, chalk_1.red)(text)));
+    };
+    /**
+     * Log a debug statement to the console
+     * @param text The text that is being logged by the process
+     */
+    Logger.prototype.debug = function (text) {
+        console.log("".concat((0, chalk_1.blue)("[".concat(getTime(), "]")), " ").concat((0, chalk_1.bgBlue)('DEBUG'), " [").concat(this.name, "] ").concat((0, chalk_1.dim)(text)));
     };
     return Logger;
 }());
