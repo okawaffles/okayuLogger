@@ -13,7 +13,7 @@ function getTime() {
         mn = `0${mn}`;
     if (parseInt(sc) < 10)
         sc = `0${sc}`;
-    return `${hr}:${mn}:${sc}`;
+    return `${d.toLocaleDateString()} ${d.toLocaleTimeString()}`;
 }
 /**
  * Log an info statement to the console

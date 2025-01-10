@@ -1,6 +1,6 @@
 {
   "name": "okayulogger",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "description": "A simple console logger that has colors.",
   "main": "./index.js",
   "repository": {
